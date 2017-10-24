@@ -12,10 +12,10 @@
 }
 .pokemon-title { 
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     width: 327px;
     border: blue 1px solid;
-    display: block;
     position: relative;
     margin: 0%;
     color:black;
@@ -26,10 +26,12 @@
 
 .pokemon-name {
     display: flex;
+    margin: 0%;
 }
 
 .pokemon-id {
     display: flex;
+    margin: 0%;
 }
 
 .picture-frame {
