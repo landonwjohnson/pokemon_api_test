@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { getPokemon } from '../services/pokemon';
 import '../css/card.css';
-import { getCharacteristics } from '../services/pokemon';
+// import { getCharacteristics } from '../services/pokemon';
+
+
 
 export default class Card extends React.Component {
   constructor(props){
     super(props)
       this.state = {
         pokemon: {},
-        id: 25
+        id: 1
       }
 
   }
@@ -33,14 +35,17 @@ export default class Card extends React.Component {
             </div>
 
             <div className="picture-frame">
-
+            <input type="number" value={this.state.id}/> 
             </div>
             
        
-            <input pokemonCount={this.state.id} type="number" value={this.state.id}/>         
-            <h1>{this.state.pokemon.height} {this.state.pokemon.weight}</h1>
-            
+           
+            <div className = "body-type">        
+            <h1>Height: {this.state.pokemon.height}m Weight: {this.state.pokemon.weight}kg</h1>
+            </div>
 
+
+            
         
       </div>
     );

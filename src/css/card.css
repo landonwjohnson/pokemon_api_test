@@ -15,7 +15,6 @@
     flex-direction: row;
     justify-content: space-between;
     width: 327px;
-    border: blue 1px solid;
     position: relative;
     margin: 0%;
     color:black;
@@ -35,11 +34,39 @@
 }
 
 .picture-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: solid gold 8px;
     margin-left: auto;
     margin-right: auto;
-    display: block;
-    position: relative;
+    /* display: block;
+    position: relative; */
     width: 327px;
     height: 230px;
+}
+
+.body-type{
+    background:  gold; 
+    display: flex;
+    font-style: italic;
+    align-items: center;
+    flex-direction: row;
+    height: 20px;
+    width: 313px;
+    position: relative;
+    justify-content: center;
+    color:black;
+    margin-top: 5px;
+    font-size: 8px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+input{
+    width: 100%;
+    height: 100%;
+    border-style: none;
+    font-size: 40px;
+    text-align: center;
 }
