@@ -13,8 +13,23 @@ export default class Card extends React.Component {
         pokemon: {},
         id: 1
       }
+
+      this.countUp = this.countUp.bind(this);
+      this.countDown = this.countDown.bind(this);
   }
 
+
+  countUp(){
+    this.setState({
+      id: this.state.id + 1
+    })
+  }
+
+  countDown(){
+    this.setState({
+      id: this.state.id - 1
+    })
+  }
 
 
   componentDidMount(){
@@ -26,14 +41,24 @@ export default class Card extends React.Component {
 
   }
   render() {
+
+    // setTimeout(() => {
+    //   this.setState({
+    //     id: this.state.id + 1
+    //   })
+    // }, 20000)
+
     return (
       <div className="pokemon-card-container">
             <div className="pokemon-title">
             <h1 className="pokemon-name">{this.state.pokemon.name} </h1>
-            <h1 className="pokemon-id">#<input type="number" value={this.state.id}/>  </h1>
+            {/* <h1 className="pokemon-id">#{this.state.pokemon.id}  </h1> */}
+            {<h1 className="pokemon-id">#<input type="number" value={this.state.id}/>  </h1>}
             </div>
 
             <div className="picture-frame">
+              <button onClick={this.countDown}> - </button>
+              <button onClick={this.countUp}> + </button>
             </div>
             
        
