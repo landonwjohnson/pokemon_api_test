@@ -65,13 +65,37 @@ body{
     height: 20px;
     max-width: 313px;
     position: relative;
-    justify-content: center;
+    justify-content: space-between;
     color:black;
     margin-top: 5px;
     margin-bottom: 0%;
     font-size: 8px;
     margin-right: auto;
     margin-left: auto;
+}
+
+.btn-counter {
+    background: transparent;
+    border-style: none;
+    font-size: 20px;
+    overflow: visible;
+    animation: counterBump 2s infinite ease-in-out;
+}
+
+.btn-counter:active {
+    background: transparent;
+    border-style: none;
+    font-size: 20px;
+    overflow: visible;
+    animation: none;
+}
+
+.btn-counter:hover {
+    background: transparent;
+    border-style: none;
+    font-size: 20px;
+    overflow: visible;
+    animation: none;
 }
 
 input{
@@ -85,6 +109,7 @@ input{
     font-weight: bold;
     padding-bottom: -10px;
     background: transparent;
+    overflow: visible;
 }
 
 .divider {
@@ -126,4 +151,20 @@ input{
     height: 30px;
     max-width: 342px;   
     border: 4px gold solid;
+}
+
+@keyframes counterBump {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1);
+    }
+
+    75%{
+        transform: scale(1.3);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
