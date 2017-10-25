@@ -5,9 +5,9 @@ body{
 }
 .pokemon-card-container{
     display: block;
-    position: absolute;
-    width: 385px;
-    height: 552px;
+    position: relative;
+    max-width: 385px;
+    max-height: 552px;
     border: gold solid 22px;
     border-radius: 12px;
     /* background-image: url('../template.png');
@@ -20,7 +20,7 @@ body{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 327px;
+    max-width: 327px;
     position: relative;
     margin: 0%;
     color:black;
@@ -50,7 +50,7 @@ body{
     margin-right: auto;
     /* display: block;
     position: relative; */
-    width: 327px;
+    max-width: 327px;
     height: 230px;
     box-shadow: 5px 5px 10px #888888;
 }
@@ -63,7 +63,7 @@ body{
     font-weight: 300;
     flex-direction: row;
     height: 20px;
-    width: 313px;
+    max-width: 313px;
     position: relative;
     justify-content: center;
     color:black;
@@ -84,6 +84,7 @@ input{
     max-width: 45px;
     font-weight: bold;
     padding-bottom: -10px;
+    background: transparent;
 }
 
 .divider {
@@ -92,13 +93,13 @@ input{
     display: block;
     height: 1px;
     padding: .1px;
-    width: 370px;
+    max-width: 370px;
     background: black;
 }
 .attack-move{
     margin-left: auto;
     margin-right: auto;
-    width: 370px;
+    max-width: 370px;
     height: 72px;
 }
 
@@ -108,7 +109,7 @@ input{
     display: flex;
     justify-content: space-between;
     height: 40px;
-    width: 350px;
+    max-width: 350px;
 }
 
 .item{
@@ -123,6 +124,6 @@ input{
     margin-right: auto;
     display: block;
     height: 30px;
-    width: 342px;   
+    max-width: 342px;   
     border: 4px gold solid;
 }
