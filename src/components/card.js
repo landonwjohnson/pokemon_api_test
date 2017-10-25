@@ -11,9 +11,8 @@ export default class Card extends React.Component {
     super(props)
       this.state = {
         pokemon: {},
-        id: 400
+        id: 1
       }
-
   }
 
 
@@ -45,6 +44,15 @@ export default class Card extends React.Component {
             <div className="attack-move"></div>
             <span className="divider"> </span>
             <div className="attack-move"></div>
+            <span className="divider"> </span>
+            <div className="col3"> 
+              <span className="item" />
+              <span className="item" />
+              <span className="item" />
+            </div>
+            <div className="about">
+
+            </div>
 
 
             
