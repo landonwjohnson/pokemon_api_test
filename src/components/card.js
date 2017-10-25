@@ -11,7 +11,7 @@ export default class Card extends React.Component {
     super(props)
       this.state = {
         pokemon: {},
-        id: 1
+        id: 400
       }
 
   }
@@ -31,11 +31,10 @@ export default class Card extends React.Component {
       <div className="pokemon-card-container">
             <div className="pokemon-title">
             <h1 className="pokemon-name">{this.state.pokemon.name} </h1>
-            <h1 className="pokemon-id">#{this.state.pokemon.id} </h1>
+            <h1 className="pokemon-id">#<input type="number" value={this.state.id}/>  </h1>
             </div>
 
             <div className="picture-frame">
-            <input type="number" value={this.state.id}/> 
             </div>
             
        
@@ -43,6 +42,9 @@ export default class Card extends React.Component {
             <div className = "body-type">        
             <h1>Height: {this.state.pokemon.height}m Weight: {this.state.pokemon.weight}kg</h1>
             </div>
+            <div className="attack-move"></div>
+            <span className="divider"> </span>
+            <div className="attack-move"></div>
 
 
             
