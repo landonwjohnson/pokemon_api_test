@@ -64,19 +64,19 @@ export default class Card extends React.Component {
   
   }
 
-  
-
 
 
 
   
   render() {
-    const stuff = <h1>stuff</h1>
+    console.log(this.state.pokemon.results)
+    let stuff = <h1>stuff</h1>
+    let pokemon = <h1></h1>
     if(this.state.species.genera !== undefined){
-      const stuff = <h1>{this.state.species.genera[0].genus[2]}</h1>
+        pokemon = this.state.pokemon.results.map((element)=>{
+          return <h1>{element.name}</h1>
+        })
     }
-
-
     // setTimeout(() => {
     //   this.setState({
     //     id: this.state.id + 1
@@ -92,6 +92,7 @@ export default class Card extends React.Component {
             </div>
 
             <div className="picture-frame">
+              
               {stuff}
             </div>
             
@@ -101,7 +102,7 @@ export default class Card extends React.Component {
 
             <button className="btn-counter" onClick={this.countDown}> - </button> 
 
-            <h1>  Height: {this.state.pokemon.height}m Weight: {this.state.pokemon.weight}kg</h1>
+            <h1> Height: {this.state.pokemon.height}m Weight: {this.state.pokemon.weight}kg</h1>
 
             <button className="btn-counter" onClick={this.countUp}> + </button>
             </div>
@@ -125,7 +126,7 @@ export default class Card extends React.Component {
 
 
             
-        
+        {pokemon}
       </div>
     );
   }
