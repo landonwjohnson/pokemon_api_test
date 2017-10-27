@@ -1,5 +1,31 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:600i,700');
 
+.loading{
+    height: 50px;
+    width: 50px;
+    background-color: red;
+    border-radius: 100px;
+    background: #ad2222;
+    background: -moz-linear-gradient(top, #ad2222 0%, #ad2222 50%, #f2f2f2 51%, #ffffff 100%);
+    background: -webkit-linear-gradient(top, #ad2222 0%,#ad2222 50%,#f2f2f2 51%,#ffffff 100%);
+    background: linear-gradient(to bottom, #ad2222 0%,#ad2222 50%,#f2f2f2 51%,#ffffff 100%);
+    animation: ball-spin ease-in-out infinite 1s;
+}
+
+@keyframes ball-spin {
+    0%{
+        transform: rotate(0deg)
+    }
+    100%{
+        transform: rotate(360deg)
+    }
+
+}
+
+
+.pokemon-sprite{
+    transform: scale(1.8);
+}
 body{
     font-family: 'Open Sans', sans-serif;
 }
@@ -27,8 +53,6 @@ body{
     font-size: 10px;
     margin-right: auto;
     margin-left: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
 .pokemon-name {
@@ -48,19 +72,19 @@ body{
     border: solid gold 8px;
     margin-left: auto;
     margin-right: auto;
-    /* display: block;
-    position: relative; */
     max-width: 327px;
-    height: 230px;
-    box-shadow: 5px 5px 10px #888888;
+    height: 205px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.205);
+    background: white;
 }
 
 .body-type{
+    
     background:  gold; 
     display: flex;
-    font-style: italic;
+    
     align-items: center;
-    font-weight: 300;
+    
     flex-direction: row;
     height: 20px;
     max-width: 313px;
@@ -69,9 +93,24 @@ body{
     color:black;
     margin-top: 5px;
     margin-bottom: 0%;
-    font-size: 8px;
+   
     margin-right: auto;
     margin-left: auto;
+    
+}
+.body-type h2 {
+    white-space: pre-wrap;
+    font-size: 12px;
+    word-break: none;
+    font-weight: 300;
+    font-style: italic;
+    text-overflow: ellipsis;
+    
+
+}
+
+.body-type h2{
+    margin: 0; 
 }
 
 .btn-counter {
@@ -125,10 +164,13 @@ input{
     background: black;
 }
 .attack-move{
+    display: block;
+    position: relative;
+    margin: 0;
     margin-left: auto;
     margin-right: auto;
     max-width: 370px;
-    height: 72px;
+    height: 68px;
 }
 
 .col3{
@@ -148,14 +190,24 @@ input{
 }
 
 .about {
+    display: block;
+    position: relative;
     margin-left: auto;
     margin-right: auto;
-    display: block;
-    height: 30px;
+    height: auto;
     max-width: 342px;   
     border: 4px gold solid;
+    bottom: 12px;
+    
 }
 
+.about-pokemon{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
+    font-size: 9px;
+
+}
 @keyframes counterBump {
     0%{
         transform: scale(1);

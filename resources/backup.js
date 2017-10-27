@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { getPokemon, getSpecies, getMove } from '../services/pokemon';
+import { getPokemon, getSpecies } from '../services/pokemon';
 import '../css/card.css';
 import q from "q";
 // import { getCharacteristics } from '../services/pokemon';
@@ -11,16 +11,12 @@ export default class Card extends React.Component {
   constructor(props){
     super(props)
       this.state = {
-        species: "Pokemon",
-        id: 0,
-        name: "Name",
-        HP: "0",
+        species: "",
+        id: 1,
+        name: "",
         color: "",
-        height: "0",
-        weight: "0",
-        sprite: "",
-        move: "",
-        about: "About this pokemon",
+        height: "",
+        weight: "",
         loading: false
       }
       this.fireAPI = this.fireAPI.bind(this);
@@ -28,43 +24,22 @@ export default class Card extends React.Component {
       this.countDown = this.countDown.bind(this);
       
   }
-  
 
   fireAPI(id){
-    this.setState({
-      loading: true,
-      species: "Pokemon",
-      name: "",
-      HP: "0",
-      color: "",
-      height: "0",
-      weight: "0",
-      sprite: "",
-      move: "",
-      about: "",
-    })
 
     q.all([
       getPokemon(id),
-      getSpecies(id),
-      getMove(id)
+      getSpecies(id)
     ])
-
-    
     .then((data) => {
       const pokemon = data[0];
       const species = data[1];
-      const move = data[2];
       this.setState({
         species: species.genera[2].genus,
-        about: species.flavor_text_entries[1].flavor_text,
         id: pokemon.id,
         name: pokemon.name,
-        HP: pokemon.stats[5].base_stat,
         height: pokemon.height,
         weight: pokemon.weight,
-        sprite: pokemon.sprites.front_default,
-        color: species.color.name,
         loading: false
       })
     })
@@ -76,7 +51,7 @@ export default class Card extends React.Component {
     })
     this.fireAPI(id);
   }
-
+  
   countDown(id){
     this.setState({
       id
@@ -85,41 +60,33 @@ export default class Card extends React.Component {
   }
 
   render() { 
-    let speciesUI = this.state.species;
-    let pokeballUI;
-    let pokemonNumberUI;
+    let speciesUI;
     if(this.state.loading){
-      pokeballUI = <div className="loading"><span></span></div>
-      pokemonNumberUI = `loading #${this.state.id}`;
+      speciesUI = <div className="loading"><span></span></div>
     }else{
-      pokeballUI = <span> </span>
-      pokemonNumberUI = <span> </span>
+      speciesUI = this.state.species
     }
    
     return (
-      <div className="pokemon-card-container" style={{"background-color": `${this.state.color}` }}>
+      <div className="pokemon-card-container">
             <div className="pokemon-title">
-            <h1 className="pokemon-name">{this.state.name} {pokemonNumberUI} </h1>
-            {/* <h1 className="pokemon-id">#{this.state.id}  </h1>  */}
-            <h1 className="pokemone-hit-points">{this.state.HP} HP</h1>
+            <h1 className="pokemon-name">{this.state.name} </h1>
+            <h1 className="pokemon-id">#{this.state.id}  </h1> 
             </div>
 
             <div className="picture-frame">
-             {pokeballUI}
-             <img className="pokemon-sprite" src={this.state.sprite}/>
-             
+             {speciesUI}
             </div>
             
 
-
+           
             <div className = "body-type">  
 
-            <button className="btn-counter"   onClick={this.countDown.bind(this, this.state.id -1)}> - </button> 
+            <button className="btn-counter" onClick={this.countDown}> - </button> 
 
-            <h2>{speciesUI}.  Height: {this.state.height}m, Weight: {this.state.weight}kg.</h2>
+            <h1>  Height: {this.state.height}m Weight: {this.state.weight}kg</h1>
 
             <button className="btn-counter" onClick={this.countUp.bind(this, this.state.id + 1)}> + </button>
-
             </div>
 
 
@@ -136,7 +103,7 @@ export default class Card extends React.Component {
               <span className="item" />
             </div>
             <div className="about">
-                <div className="about-pokemon">{this.state.about}</div>
+
             </div> 
       </div>
     );

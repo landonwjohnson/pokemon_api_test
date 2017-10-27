@@ -11,6 +11,10 @@ export const getSpecies = function(pokemonID) {
     .then(res => res.json())
 }
 
+export const getMove = function(pokemonID) {
+    return fetch(`https://pokeapi.co/api/v2/move/${pokemonID}/`)
+}
+
 
 // export const getCharacteristics = function(pokemonID) {
 //     return fetch(`https://pokeapi.co/api/v2/characteristic/${pokemonID}`)
