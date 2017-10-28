@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { getPokemon, getSpecies, getType, moveDamageClass } from '../services/pokemon';
+import { getPokemon, getSpecies, getMove } from '../services/pokemon';
 import '../css/card.css';
 import q from "q";
 // import { getCharacteristics } from '../services/pokemon';
@@ -21,27 +21,27 @@ export default class Card extends React.Component {
         sprite: "",
         move: "",
         about: "About this pokemon",
-        move: "",
+        type: "",
         loading: false
       }
       this.fireAPI = this.fireAPI.bind(this);
       this.countUp = this.countUp.bind(this);
       this.countDown = this.countDown.bind(this);
-      // this.typeToColor = this.typeToColor.bind(this);
+      this.typeToColor = this.typeToColor.bind(this);
       
   }
   
-  // typeToColor(){
-  //   if(this.state.type0 === "grass"){
-  //     this.setState({
-  //       color : "#97CF82"
-  //   })}
-  //   if(this.state.type1 === "fire"){
-  //     this.setState({
-  //       color: "#D36252"
-  //     })
-  //   }
-  // }
+  typeToColor(){
+    if(this.state.type0 === "grass"){
+      this.setState({
+        color : "#97CF82"
+    })}
+    if(this.state.type1 === "fire"){
+      this.setState({
+        color: "#D36252"
+      })
+    }
+  }
  
 
   fireAPI(id){
@@ -55,17 +55,21 @@ export default class Card extends React.Component {
       weight: "0",
       sprite: "",
       move: "",
-      about: ""
+      about: "",
+      type0: "",
+      type1: ""
     })
 
     q.all([
       getPokemon(id),
       getSpecies(id),
-      getType(id)
+      getMove(id)
     ])
     .then((data) => {
       const pokemon = data[0];
-      const species = data[1];    
+      const species = data[1];
+      const move = data[2];
+      this.typeToColor()      
       this.setState({
         species: species.genera[2].genus,
         about: species.flavor_text_entries[1].flavor_text,
@@ -75,10 +79,8 @@ export default class Card extends React.Component {
         height: pokemon.height,
         weight: pokemon.weight,
         sprite: pokemon.sprites.front_default,
-        move: pokemon.moves[0].move.name,
         type0: pokemon.types[0].type.name,
         type1: pokemon.types[1].type.name,
-       
         loading: false
       })
       
@@ -147,11 +149,17 @@ export default class Card extends React.Component {
 
 
             <div className="attack-move">
-                {this.state.move}
+                
               <h1></h1>
             </div>
             <span className="divider"> </span>
             <div className="attack-move"></div>
+            <span className="divider"> </span>
+            <div className="col3"> 
+              <span className="item" />
+              <span className="item" />
+              <span className="item" />
+            </div>
             <div className="about">
                 <div className="about-pokemon">{this.state.about}</div>
             </div> 

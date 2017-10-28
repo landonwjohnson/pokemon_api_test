@@ -33,7 +33,6 @@ body{
 .pokemon-card-container{
     display: block;
     position: relative;
-    height: 100%;
     max-width: 385px;
     max-height: 552px;
     border: gold solid 22px;
@@ -107,6 +106,8 @@ body{
     font-weight: 300;
     font-style: italic;
     text-overflow: ellipsis;
+    
+
 }
 
 .body-type h2{
@@ -164,10 +165,11 @@ input{
     background: black;
 }
 .attack-move{
-    display: flex;
+    display: block;
     position: relative;
-    justify-content: center;
-    align-items: center;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 370px;
     height: 68px;
 }
@@ -222,63 +224,3 @@ input{
         transform: scale(1);
     }
 }
-
-@media only screen and (max-width: 375px) {
-    .pokemon-card-container{
-        height: 100vh;
-        
-    }
-    .pokemon-title { 
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 80%;
-        position: relative;
-        margin: 0%;
-        color:black;
-        font-size: 10px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    .picture-frame {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: solid gold 8px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 83%;
-        height: 30%;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.205);
-        background: white;
-    }
-
-    .body-type{
-        background:  gold; 
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        height: 20px;
-        max-width: 76%;
-        position: relative;
-        justify-content: space-between;
-        color:black;
-        margin-top: 5px;
-        margin-bottom: 0%;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    .body-type h2 {
-        white-space: pre-wrap;
-        font-size: 9px;
-        word-break: none;
-        font-weight: 300;
-        font-style: italic;
-        text-overflow: ellipsis;
-    }
-
-    
-}    
