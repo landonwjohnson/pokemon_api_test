@@ -17,7 +17,7 @@ export default class Card extends React.Component {
     super(props)
       this.state = {
         species: "Pokemon",
-        id: 12,
+        id: 0,
         name: "Name",
         HP: "0",
         energy: "",
