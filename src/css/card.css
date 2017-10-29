@@ -57,10 +57,22 @@ body{
     margin-left: auto;
 }
 
-.pokemon-name {
+.pokemone-hit-points {
     display: flex;
-    margin: 0%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
+
+
+
+.pokemone-hit-points img {
+  width: 24px;
+  height: 24px;
+}
+
+
+
 
 .pokemon-id {
     display: flex;
@@ -180,6 +192,13 @@ input{
     height: 40px;
     max-width: 350px;
 }
+
+.energy-type {
+  
+  
+    
+}
+
 
 .item{
     width: 45px;

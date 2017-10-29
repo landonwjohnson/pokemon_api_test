@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { getPokemon, getSpecies, getType, moveDamageClass } from '../services/pokemon';
 import '../css/card.css';
+import leafEnergy from '../img/svg/leaf-energy.svg';
+import fireEnergy from '../img/svg/fire-energy.svg';
 import q from "q";
 // import { getCharacteristics } from '../services/pokemon';
 
@@ -22,27 +24,19 @@ export default class Card extends React.Component {
         move: "",
         about: "About this pokemon",
         move: "",
+        type0: "",
+        type1: "",
         loading: false
       }
       this.fireAPI = this.fireAPI.bind(this);
       this.countUp = this.countUp.bind(this);
       this.countDown = this.countDown.bind(this);
-      // this.typeToColor = this.typeToColor.bind(this);
       
   }
   
-  // typeToColor(){
-  //   if(this.state.type0 === "grass"){
-  //     this.setState({
-  //       color : "#97CF82"
-  //   })}
-  //   if(this.state.type1 === "fire"){
-  //     this.setState({
-  //       color: "#D36252"
-  //     })
-  //   }
-  // }
- 
+
+  
+  
 
   fireAPI(id){
     this.setState({
@@ -55,7 +49,9 @@ export default class Card extends React.Component {
       weight: "0",
       sprite: "",
       move: "",
-      about: ""
+      about: "",
+      type0: "",
+      type1: ""
     })
 
     q.all([
@@ -78,10 +74,10 @@ export default class Card extends React.Component {
         move: pokemon.moves[0].move.name,
         type0: pokemon.types[0].type.name,
         type1: pokemon.types[1].type.name,
-       
         loading: false
       })
-      
+      console.log(this.state.type0)
+      console.log(this.state.type1)
     })
   }
 
@@ -102,7 +98,21 @@ export default class Card extends React.Component {
   }
 
   render() { 
-    
+    let type = this.state.type0;
+    let type2 = this.state.type1;
+    function testEnergyChanger(){
+      if(type === "grass" || type2 === "grass"){
+        var energyType = leafEnergy;
+        return energyType;
+      }
+
+      if(type === "fire" || type2 === "fire"){
+        var energyType = fireEnergy;
+        return energyType;
+      }
+    }
+
+    let energyType = testEnergyChanger();
     let cardColor = this.state.color;
     let speciesUI = this.state.species;
     let pokeballUI;
@@ -123,14 +133,14 @@ export default class Card extends React.Component {
             <div className="pokemon-title">
             <h1 className="pokemon-name">{this.state.name} {pokemonNumberUI} </h1>
             {/* <h1 className="pokemon-id">#{this.state.id}  </h1>  */}
-            <h1 className="pokemone-hit-points">{this.state.HP} HP</h1>
+            <div className="pokemone-hit-points"><h1>{this.state.HP} HP</h1> <img src={energyType}/> </div>
             </div>
+            
 
             <div className="picture-frame">
              {pokeballUI}
              <img className="pokemon-sprite" src={this.state.sprite}/>
-             <h4>{this.state.type0}</h4>
-             <h4>{this.state.type1}</h4>
+             
             </div>
             
 
@@ -157,5 +167,7 @@ export default class Card extends React.Component {
             </div> 
       </div>
     );
+
   }
+    
 }
