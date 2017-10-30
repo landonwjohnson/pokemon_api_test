@@ -38,10 +38,18 @@ body{
     max-height: 552px;
     border: gold solid 22px;
     border-radius: 12px;
-    /* background-image: url('../template.png');
-    background-repeat: no-repeat;
-    background-position-y: -23px;
-    background-position-x: -20px; */
+    background: url('../img/svg/card-background-texture.svg');
+    background-size: cover;
+}
+
+.color-card{
+    display: block;
+    position: absolute;
+    opacity: 0.5;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    
 }
 .pokemon-title { 
     display: flex;
@@ -55,6 +63,7 @@ body{
     font-size: 10px;
     margin-right: auto;
     margin-left: auto;
+    z-index: 1;
 }
 
 .pokemone-hit-points {
@@ -90,11 +99,13 @@ body{
     height: 205px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.205);
     background: white;
+    z-index: 1;
+    position: relative;
 }
 
 .body-type{
     
-    background:  gold; 
+    background: linear-gradient(to right, #b98901 0%,#ffd700 40%,#ffd700 60%,#b98901 100%);
     display: flex;
     
     align-items: center;
@@ -119,6 +130,7 @@ body{
     font-weight: 300;
     font-style: italic;
     text-overflow: ellipsis;
+    position: relative;
 }
 
 .body-type h2{

@@ -7,6 +7,8 @@ import fireEnergy from '../img/svg/fire-energy.svg';
 import waterEnergy from '../img/svg/water-energy.svg';
 import electricEnergy from '../img/svg/electric-energy.svg';
 import fightingEnergy from '../img/svg/fighting-energy.svg';
+import normalEnergy from '../img/svg/normal-energy.svg';
+import noEnergy from '../img/svg/no-energy.svg';
 import q from "q";
 // import { getCharacteristics } from '../services/pokemon';
 
@@ -20,7 +22,7 @@ export default class Card extends React.Component {
         id: 0,
         name: "Name",
         HP: "0",
-        energy: "",
+        energy: noEnergy,
         color: "",
         height: "0",
         weight: "0",
@@ -42,12 +44,12 @@ export default class Card extends React.Component {
   typeToColor(){
     if(this.state.type0 === "grass" || this.state.type1 === "grass"){
       this.setState({
-        color : "#97CF82",
+        color : "green",
         energy: leafEnergy
     })}
     if(this.state.type0 === "fire" || this.state.type1 === "fire"){
       this.setState({
-        color: "#D36252",
+        color: "red",
         energy: fireEnergy
       })
     }
@@ -55,6 +57,12 @@ export default class Card extends React.Component {
       this.setState({
         color: "#6FA9D2",
         energy: waterEnergy
+      })
+    }
+    if(this.state.type0 === "normal" || this.state.type1 === "normal"){
+      this.setState({
+        color: "#FFFFFF",
+        energy: normalEnergy
       })
     }
   }
@@ -68,8 +76,8 @@ export default class Card extends React.Component {
       species: "Pokemon",
       name: "",
       HP: "0",
-      color: "",
-      energy: "",
+      color: "#FFFFFF",
+      energy: noEnergy,
       height: "0",
       weight: "0",
       sprite: "",
@@ -82,15 +90,12 @@ export default class Card extends React.Component {
 
     q.all([
       getPokemon(id),
-      getSpecies(id),
-      getType(id)
+      getSpecies(id)
     ])
     .then((data) => {
       const pokemon = data[0];
       const species = data[1];    
       this.setState({
-        species: species.genera[2].genus,
-        about: species.flavor_text_entries[1].flavor_text,
         id: pokemon.id,
         name: pokemon.name,
         HP: pokemon.stats[5].base_stat,
@@ -100,12 +105,13 @@ export default class Card extends React.Component {
         move: pokemon.moves[0].move.name,
         type0: pokemon.types[0].type.name,
         type1: pokemon.types[1].type.name,
+        species: species.genera[2].genus,
+        about: species.flavor_text_entries[1].flavor_text,
         loading: false
       })
       this.typeToColor();
-      console.log(this.state.type0)
-      console.log(this.state.type1)
     })
+    
   }
 
  
@@ -142,7 +148,8 @@ export default class Card extends React.Component {
    
    
     return (
-      <div className="pokemon-card-container" style={{"background-color": `${cardColor}` }}>
+      <div className="pokemon-card-container">
+                        <div className="color-card" style={{"background-color": `${cardColor}` }} />
             <div className="pokemon-title">
             <h1 className="pokemon-name">{this.state.name} {pokemonNumberUI} </h1>
             {/* <h1 className="pokemon-id">#{this.state.id}  </h1>  */}
@@ -178,6 +185,8 @@ export default class Card extends React.Component {
             <div className="about">
                 <div className="about-pokemon">{this.state.about}</div>
             </div> 
+
+            
       </div>
     );
 
